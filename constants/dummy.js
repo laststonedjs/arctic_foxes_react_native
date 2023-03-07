@@ -1,0 +1,78 @@
+import assets from "./assets";
+
+const foxData = [
+  {
+    id: 1,
+    name: "Alfa",
+    domain: "Plantae",
+    age: 3,
+    description: "In summer, arctic foxes feed primarily on small mammals, including lemmings and tundra voles. Foxes denning near rocky cliffs along the seacoast often depend heavily on nesting seabirds such as auklets, puffins, and murres. f a fox can't find food, or if the weather gets really bad, it can dig a snow den and hunker down for up to two weeks. As long as a fox is warm, it can slow down its heart rate and metabolism, which helps the animal save energy so it does not have to eat as much.",
+    image: assets.fox0,
+    food: "Birds",
+  },
+  {
+    id: 2,
+    name: "Bravo",
+    domain: "Protista",
+    age: 5,
+    description: "Both blue and white color phases occur in arctic foxes. Foxes of the blue phase remain dark or charcoal colored year round, and are only somewhat lighter colored in winter, as opposed to the luxurious white winter coats of the white color phase foxes. Their feet also have a layer of thick fur, like built-in snow boots. This helps muffle an arctic fox's footsteps, making it harder for prey to hear them.",
+    image: assets.fox1,
+    food: "Lemmings",
+  },
+  {
+    id: 3,
+    name: "Charlie",
+    domain: "Animalia",
+    age: 7,
+    description: "Newborn arctic fox pups of both color phases are covered with short velvety dark brown fur. This fur lengthens and becomes lighter, especially on the flanks, after the pups reach two weeks. ",
+    image: assets.fox2,
+    food: "Birds, Squirrel",
+  },
+  {
+    id: 4,
+    name: "Delta",
+    domain: "Plantae",
+    age: 3,
+    description: "The population trend is unknown, but in most likely stable. Foxes are common, sometimes abundant, with populations fluctuating considerably in relation to prey density. Foxes are being eliminated from islands they were introduced to for fur farming. Arctic fox populations rise and fall with cyclic changes of their prey. ",
+    image: assets.fox3,
+    food: "Squirrel",
+  },
+  {
+    id: 5,
+    name: "Echo",
+    domain: "Chromista",
+    age: 5,
+    description: "When inactive, the arctic fox uses underground dens in a bank or hillside, or may tunnel into a snow bank in the winter. They prefer sandy soil along riverbanks, hillocks, and occasionally talus for denning. They will commonly use dumps in northern Alaska. It is well adapted to living in cold environments, and is best known for its thick, warm fur that is also used as camouflage ",
+    image: assets.fox4,
+    food: "Squirrel, Lemmings",
+  },
+  {
+    id: 6,
+    name: "Foxtrot",
+    domain: "Funghi",
+    age: 2,
+    description: "By late June the face, legs, and upper parts of the body are covered with short, brown summer fur. The fur of the lower sides and abdomen is yellowish-white. The change to winter pelage occurs in September and October. By November the luxurious white winter coat is complete. Foxes of the blue phase remain dark or charcoal colored year round, but are somewhat lighter colored in winter. It is well adapted to living in cold environments, and is best known for its thick, warm fur that is also used as camouflage.",
+    image: assets.fox5,
+    food: "Lemmings",
+  },
+  {
+    id: 7,
+    name: "L1Z1X",
+    domain: "Monera",
+    age: 1,
+    description: "Family units gradually break up during September and October. During midwinter, foxes lead a mostly solitary existence except when congregating at the carcasses of marine mammals, caribou, or reindeer. Arctic foxes attain sexual maturity at nine to 10 months, but many die in their first year.",
+    image: assets.fox6,
+    food: "Lemmings, Squirrel",
+  },
+  {
+    id: 8,
+    name: "Creuss",
+    domain: "Nebula",
+    age: 6,
+    description: "The arctic fox is found in treeless coastal areas of Alaska from the Aleutian Islands north to Point Barrow and east to the Canada border. They prefer tundra habitat, usually near rocky shores, and have been observed ranging far out onto pack ice in winter. Family units gradually break up during September and October.",
+    image: assets.fox7,
+    food: "Birds",
+  },
+];
+
+export { foxData };
