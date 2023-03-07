@@ -1,6 +1,5 @@
 # Arctic foxes
 <hr/>
-###
 
 To start the application, it is necessary to issue the command 'npm start' from the root directory ('arctic_foxes_rn') and expo will generate a QR code for scanning (expo-go app - we can download it from the play store).
 
