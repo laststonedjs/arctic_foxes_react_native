@@ -7,11 +7,12 @@ import DetailsFox from "./DetailsFox";
 import { SubInfo } from "./SubInfo";
 import FoxItem from "./FoxItem";
 import AddFox from "./AddFox";
+import ImageViewer from "./ImagePicker";
 
 export {
   HomeHeader, FocusedStatusBar,
   FoxCard, EditButton,
   DetailButton, CircleButton,
   DetailsDesc, DetailsFox, SubInfo,
-  FoxItem, AddFox
+  FoxItem, AddFox, ImageViewer
 }

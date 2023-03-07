@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
+// expo image-picker
+import * as ImagePicker from 'expo-image-picker';
 import {
   Text, View, SafeAreaView,
   Image, StatusBar, FlatList,
-  TouchableOpacity, Modal, TextInput,
+  TouchableOpacity, Modal, TextInput, Button,
 } from 'react-native';
 // components
 import {
-  FoxItem, CircleButton,
+  ImageViewer, CircleButton,
   SubInfo, FocusedStatusBar,
   DetailsDesc, DetailsFox, AddFox
 } from '../components';
 // constants
 import { COLORS, SIZES, FONTS, assets, foxData } from '../constants';
+import Toast from 'react-native-simple-toast';
 
+
+// DetailsHeader component
 const DetailsHeader = ({ data, navigation }) => (
   <View style={{ width: "100%", height: 373 }}>
     <Image
@@ -34,13 +39,41 @@ const Details = ({ route, navigation }) => {
   const { data } = route.params;
   const [foxes, setFoxes] = useState(foxData);
   const [inputText, setInputText] = useState();
+  const [inputAge, setInputAge] = useState();
+  const [inputDomain, setInputDomain] = useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isRender, setIsRender] = useState(false);
   const [editItem, setEditItem] = useState();
+  const [selectedImage, setSelectedImage] = useState(null);
+
+
+  // pick the image
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      quality: 1,
+      aspect: [4, 3],
+      mediaType: 'image',
+      storageOptions: {
+        skipBackup: true
+      }
+    });
+
+    console.log(result);
+    if (!result.cancelled) {
+      setSelectedImage(result.assets.uri);
+    } else {
+      alert('You did not select any image.');
+    }
+  };
+
 
   const onPressItem = (item) => {
     setIsModalVisible(true);
     setInputText(item.name);
+    setInputAge(item.age);
+    setInputDomain(item.domain);
     setEditItem(item.id);
   }
 
@@ -50,18 +83,22 @@ const Details = ({ route, navigation }) => {
         onPress={() => onPressItem(item)}
         style={{
           borderBottomWidth: 1,
+          borderTopWidth: 1,
           borderBottomColor: COLORS.lightGray,
-          alignItems: "flex-start"
+          alignItems: "center",
+          justifyContent: "space-between"
         }}
       >
         <DetailsFox foxes={item} />
-        <Text style={{
-          marginVertical: SIZES.base,
-          fontSize: SIZES.font,
-          marginLeft: 10,
-          color: COLORS.gray
-
-        }}>{item.name}</Text>
+        <Text style={{ display: "none" }}>
+          {item.name}
+        </Text>
+        <Text style={{ display: "none" }}>
+          {item.age}
+        </Text>
+        <Text style={{ display: "none" }}>
+          {item.domain}
+        </Text>
       </TouchableOpacity>
     )
   }
@@ -71,6 +108,8 @@ const Details = ({ route, navigation }) => {
     const newData = foxes.map(item => {
       if (item.id == editItem) {
         item.name = inputText;
+        item.age = inputAge;
+        item.domain = inputDomain;
         return item;
       }
       return item;
@@ -91,32 +130,12 @@ const Details = ({ route, navigation }) => {
         backgroundColor="transparent"
         transluent={true}
       />
-
-      {/* <View style={{
-        width: "100%",
-        position: "absolute",
-        bottom: 0,
-        paddingVertical: SIZES.font,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "rgba(255, 255, 255, 0.5)",
-        zIndex: 1
-      }}>
-        <EditButton
-          minWidth={170}
-          fontSize={SIZES.large}
-          {...SHADOWS.dark}
-        />
-      </View> */}
-
-      {/* <AddFox onAddFox={addFoxHandler} /> */}
-
       <FlatList
-        data={foxData} // *** (data.breeder) ***
+        data={foxData}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id.toString()}
-        contentContainerStyle={{ paddingBottom: SIZES.extraLarge * 3 }}
+        contentContainerStyle={{ paddingBottom: SIZES.large * 3 }}
         extraData={isRender}
         ListHeaderComponent={() => (
           <>
@@ -128,9 +147,10 @@ const Details = ({ route, navigation }) => {
               <Text style={{
                 fontSize: SIZES.medium,
                 fontFamily: FONTS.semiBold,
-                color: COLORS.primary
+                color: COLORS.primary,
+                marginTop: SIZES.font
               }}>
-                Click & Select to edit ⛏️
+                Click on the Fox as desired and Edit  ⛏️
               </Text>
 
             </View>
@@ -143,23 +163,36 @@ const Details = ({ route, navigation }) => {
         visible={isModalVisible}
         onRequestClose={() => setIsModalVisible(false)}
       >
+
         <View style={{
           flex: 1,
           alignItems: "center",
-          justifyContent: "center"
+          justifyContent: "center",
+          backgroundColor: COLORS.lightGray
         }}>
+
+          {/* EDIT NAME */}
           <Text style={{
-            fontFamily: FONTS.regular,
+            fontFamily: FONTS.semiBold,
             fontSize: SIZES.font,
-            padding: SIZES.base
-          }}>Edit Fox Name: </Text>
+            padding: SIZES.base,
+            marginTop: SIZES.font,
+            marginRight: SIZES.extraLarge * 10.8
+          }}
+          >
+            Edit Fox Name:
+          </Text>
           <TextInput
             style={{
               width: "90%",
-              height: 40,
-              borderColor: COLORS.gray,
+              height: 45,
+              borderColor: COLORS.white,
               borderWidth: 1,
-              fontSize: SIZES.font
+              borderRadius: 2,
+              fontSize: SIZES.font,
+              fontFamily: FONTS.light,
+              color: COLORS.white,
+              paddingHorizontal: SIZES.base
             }}
             onChangeText={(name) => setInputText(name)}
             defaultValue={inputText}
@@ -167,8 +200,83 @@ const Details = ({ route, navigation }) => {
             multiline={false}
             maxLength={200}
           />
+
+          {/* EDIT AGE */}
+          <Text style={{
+            fontFamily: FONTS.semiBold,
+            fontSize: SIZES.font,
+            padding: SIZES.base,
+            marginTop: SIZES.font,
+            marginRight: SIZES.extraLarge * 11
+          }}
+          >
+            Edit Fox Years:
+          </Text>
+          <TextInput
+            style={{
+              width: "90%",
+              height: 45,
+              borderColor: COLORS.white,
+              borderWidth: 1,
+              borderRadius: 2,
+              fontSize: SIZES.font,
+              fontFamily: FONTS.light,
+              color: COLORS.white,
+              paddingHorizontal: SIZES.base
+            }}
+            onChangeText={(age) => setInputAge(age)}
+            defaultValue={inputAge}
+            editable={true}
+            multiline={false}
+            maxLength={200}
+          />
+
+          {/* EDIT DOMAIN */}
+          <Text style={{
+            fontFamily: FONTS.semiBold,
+            fontSize: SIZES.font,
+            padding: SIZES.base,
+            marginTop: SIZES.font,
+            marginRight: SIZES.extraLarge * 10
+          }}
+          >
+            Edit Fox Kingdom:
+          </Text>
+          <TextInput
+            style={{
+              width: "90%",
+              height: 45,
+              borderColor: COLORS.white,
+              borderWidth: 1,
+              fontSize: SIZES.font,
+              borderRadius: 2,
+              fontFamily: FONTS.light,
+              color: COLORS.white,
+              paddingHorizontal: SIZES.base
+            }}
+            onChangeText={(domain) => setInputDomain(domain)}
+            defaultValue={inputDomain}
+            editable={true}
+            multiline={false}
+            maxLength={200}
+          />
+          <TouchableOpacity onPress={() => pickImage()}>
+            <Text>Choose Image</Text>
+          </TouchableOpacity>
+          <ImageViewer
+            selectedImage={selectedImage}
+          />
+          {selectedImage &&
+            <Image
+              source={{ uri: selectedImage }}
+              style={{ width: 200, height: 200 }}
+            />
+          }
           <TouchableOpacity
-            onPress={() => onPressSaveEdit()}
+            onPress={() => {
+              onPressSaveEdit();
+              Toast.showWithGravity("Congrat's, successfully edited your favorite Arctic Fox!", Toast.LONG, Toast.TOP)
+            }}
             style={{
               height: 50,
               backgroundColor: COLORS.gray,
@@ -176,10 +284,18 @@ const Details = ({ route, navigation }) => {
               borderRadius: 2,
               alignItems: "center",
               justifyContent: "center",
-              marginTop: 10
+              marginTop: 15
             }}
           >
-            <Text style={{ fontFamily: FONTS.semiBold, color: COLORS.white, }}>Save</Text>
+            <Text style={{
+              fontFamily: FONTS.semiBold,
+              fontSize: SIZES.large,
+              color: COLORS.white,
+              marginHorizontal: SIZES.font,
+            }}
+            >
+              Save
+            </Text>
           </TouchableOpacity>
         </View>
       </Modal>

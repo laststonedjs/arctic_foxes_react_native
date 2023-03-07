@@ -9,7 +9,7 @@ const DetailsFox = ({ foxes }) => {
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
-      marginVertical: SIZES.base,
+      marginVertical: SIZES.base - 2,
       paddingHorizontal: SIZES.base * 1.3,
     }}>
       <Image
