@@ -74,6 +74,7 @@ const Details = ({ route, navigation }) => {
     setInputText(item.name);
     setInputAge(item.age);
     setInputDomain(item.domain);
+    // setSelectedImage(item.image);
     setEditItem(item.id);
   }
 
@@ -110,6 +111,7 @@ const Details = ({ route, navigation }) => {
         item.name = inputText;
         item.age = inputAge;
         item.domain = inputDomain;
+        item.image = selectedImage;
         return item;
       }
       return item;
@@ -141,9 +143,9 @@ const Details = ({ route, navigation }) => {
           <>
             <DetailsHeader data={data} navigation={navigation} />
             <SubInfo years={data.age} food={data.food} />
+
             <View style={{ padding: SIZES.font }}>
               <DetailsDesc data={data} />
-
               <Text style={{
                 fontSize: SIZES.medium,
                 fontFamily: FONTS.semiBold,
@@ -152,8 +154,8 @@ const Details = ({ route, navigation }) => {
               }}>
                 Click on the Fox as desired and Edit  ⛏️
               </Text>
-
             </View>
+
           </>
         )}
       />
@@ -163,13 +165,17 @@ const Details = ({ route, navigation }) => {
         visible={isModalVisible}
         onRequestClose={() => setIsModalVisible(false)}
       >
-
         <View style={{
           flex: 1,
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: COLORS.lightGray
         }}>
+          <Text style={{
+            fontFamily: FONTS.medium,
+            fontSize: SIZES.large * 2,
+            padding: SIZES.medium
+          }}>Edit Modal</Text>
 
           {/* EDIT NAME */}
           <Text style={{
@@ -260,8 +266,30 @@ const Details = ({ route, navigation }) => {
             multiline={false}
             maxLength={200}
           />
-          <TouchableOpacity onPress={() => pickImage()}>
-            <Text>Choose Image</Text>
+
+          {/* IMAGE PICKER */}
+          <TouchableOpacity
+            onPress={() => pickImage()}
+          >
+            <View style={{
+              borderColor: COLORS.purpleLight,
+              borderWidth: 1,
+              paddingHorizontal: SIZES.base,
+              height: 45,
+              marginTop: SIZES.medium + 5,
+              borderRadius: 2,
+              backgroundColor: COLORS.white
+            }}
+            >
+              <Text style={{
+                padding: SIZES.base * 1.2,
+                fontFamily: FONTS.semiBold,
+                fontSize: SIZES.font,
+              }}
+              >
+                Pick Image
+              </Text>
+            </View>
           </TouchableOpacity>
           <ImageViewer
             selectedImage={selectedImage}
@@ -272,6 +300,8 @@ const Details = ({ route, navigation }) => {
               style={{ width: 200, height: 200 }}
             />
           }
+
+          {/* SAVE BUTTON */}
           <TouchableOpacity
             onPress={() => {
               onPressSaveEdit();
@@ -284,7 +314,7 @@ const Details = ({ route, navigation }) => {
               borderRadius: 2,
               alignItems: "center",
               justifyContent: "center",
-              marginTop: 15
+              marginTop: SIZES.extraLarge * 5
             }}
           >
             <Text style={{
@@ -297,6 +327,7 @@ const Details = ({ route, navigation }) => {
               Save
             </Text>
           </TouchableOpacity>
+
         </View>
       </Modal>
     </SafeAreaView>
