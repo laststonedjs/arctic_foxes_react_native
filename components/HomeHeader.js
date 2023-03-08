@@ -36,7 +36,6 @@ const HomeHeader = ({ onSearch }) => {
             Let's explore Arctic Foxes
           </Text>
         </View>
-
       </View>
 
       <View style={{ marginTop: SIZES.font }}>
@@ -61,6 +60,7 @@ const HomeHeader = ({ onSearch }) => {
           />
         </View>
       </View>
+
     </View>
   )
 }

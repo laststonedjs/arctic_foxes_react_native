@@ -1,6 +1,8 @@
 import { View, Text, TextInput } from 'react-native';
 import React, { useState } from 'react';
+// components
 import { ActionButton } from './Button';
+// constants
 import { COLORS } from '../constants';
 
 const FoxItem = (props) => {

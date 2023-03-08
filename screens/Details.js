@@ -62,7 +62,7 @@ const Details = ({ route, navigation }) => {
 
     console.log(result);
     if (!result.cancelled) {
-      setSelectedImage(result.assets.uri);
+      setSelectedImage(result.uri);
     } else {
       alert('You did not select any image.');
     }
@@ -186,12 +186,12 @@ const Details = ({ route, navigation }) => {
             style={{
               width: "90%",
               height: 45,
-              borderColor: COLORS.white,
+              borderColor: COLORS.purpleLight,
               borderWidth: 1,
               borderRadius: 2,
               fontSize: SIZES.font,
               fontFamily: FONTS.light,
-              color: COLORS.white,
+              color: COLORS.primary,
               paddingHorizontal: SIZES.base
             }}
             onChangeText={(name) => setInputText(name)}
@@ -216,12 +216,12 @@ const Details = ({ route, navigation }) => {
             style={{
               width: "90%",
               height: 45,
-              borderColor: COLORS.white,
+              borderColor: COLORS.purpleLight,
               borderWidth: 1,
               borderRadius: 2,
               fontSize: SIZES.font,
               fontFamily: FONTS.light,
-              color: COLORS.white,
+              color: COLORS.primary,
               paddingHorizontal: SIZES.base
             }}
             onChangeText={(age) => setInputAge(age)}
@@ -246,12 +246,12 @@ const Details = ({ route, navigation }) => {
             style={{
               width: "90%",
               height: 45,
-              borderColor: COLORS.white,
+              borderColor: COLORS.purpleLight,
               borderWidth: 1,
               fontSize: SIZES.font,
               borderRadius: 2,
               fontFamily: FONTS.light,
-              color: COLORS.white,
+              color: COLORS.primary,
               paddingHorizontal: SIZES.base
             }}
             onChangeText={(domain) => setInputDomain(domain)}

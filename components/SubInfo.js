@@ -1,5 +1,6 @@
 import { View, Text } from 'react-native';
-import { SIZES, COLORS, SHADOWS, FONTS, foxData, assets } from '../constants';
+// constants
+import { SIZES, COLORS, SHADOWS, FONTS } from '../constants';
 
 export const FoxTitle = ({ title, titleSize, subTitle, subTitleSize }) => {
   return (
@@ -48,14 +49,6 @@ export const FoxYears = ({ years }) => {
       }}>
         {years}
       </Text>
-    </View>
-  )
-}
-
-export const ImageCmp = () => {
-  return (
-    <View>
-      <Text>ImageCmp</Text>
     </View>
   )
 }

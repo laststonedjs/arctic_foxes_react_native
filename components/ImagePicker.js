@@ -1,7 +1,4 @@
-import { View, Text, Button, Image } from 'react-native';
-import React, { useRef, useState, useEffect } from 'react';
-// constants
-import { COLORS, SIZES } from '../constants';
+import { Image } from 'react-native';
 
 const ImageViewer = ({ selectedImage }) => {
   const imageSource = selectedImage !== null

@@ -3,7 +3,8 @@ export const COLORS = {
   secondary: "#4D626C",
   white: "#FFF",
   gray: "#74858C",
-  lightGray: "#E3E6E8"
+  lightGray: "#E3E6E8",
+  purpleLight: "#9F80FF",
 };
 
 export const FONTS = {
