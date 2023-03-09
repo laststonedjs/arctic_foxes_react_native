@@ -73,7 +73,7 @@ export const ActionButton = ({
         backgroundColor: COLORS.chocolateKisses,
         borderRadius: SIZES.large,
         minWidth: minWidth,
-        padding: SIZES.medium,
+        padding: SIZES.font,
         ...props
       }}
         onPress={handlePress}

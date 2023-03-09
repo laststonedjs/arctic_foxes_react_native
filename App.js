@@ -1,19 +1,11 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 // screens
 import Home from './screens/Home';
 import Details from './screens/Details';
 
 const Stack = createStackNavigator();
-
-const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    background: "transparent"
-  }
-}
 
 const App = () => {
   const [loaded] = useFonts({
@@ -27,7 +19,7 @@ const App = () => {
   if (!loaded) return null;
 
   return (
-    <NavigationContainer theme={theme}>
+    <NavigationContainer>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
         initialRouteName='Home'
