@@ -1,0 +1,40 @@
+{
+  "files": {
+    "app.js": "/static/js/app.a71c5f3d.chunk.js",
+    "app.js.map": "/static/js/app.a71c5f3d.chunk.js.map",
+    "runtime~app.js": "/static/js/runtime~app.27401809.js",
+    "runtime~app.js.map": "/static/js/runtime~app.27401809.js.map",
+    "static/js/2.18c8d134.chunk.js": "/static/js/2.18c8d134.chunk.js",
+    "static/js/2.18c8d134.chunk.js.map": "/static/js/2.18c8d134.chunk.js.map",
+    "fonts/Inter-Bold.otf": "/./fonts/Inter-Bold.otf",
+    "fonts/Inter-Light.otf": "/./fonts/Inter-Light.otf",
+    "fonts/Inter-Medium.otf": "/./fonts/Inter-Medium.otf",
+    "fonts/Inter-Regular.otf": "/./fonts/Inter-Regular.otf",
+    "fonts/Inter-SemiBold.otf": "/./fonts/Inter-SemiBold.otf",
+    "favicon-16.png": "/favicon-16.png",
+    "favicon-32.png": "/favicon-32.png",
+    "favicon.ico": "/favicon.ico",
+    "index.html": "/index.html",
+    "manifest.json": "/manifest.json",
+    "serve.json": "/serve.json",
+    "static/js/2.18c8d134.chunk.js.LICENSE.txt": "/static/js/2.18c8d134.chunk.js.LICENSE.txt",
+    "static/media/fox0.jpg": "/static/media/fox0.b1ecc5d8.jpg",
+    "static/media/fox1.jpg": "/static/media/fox1.5b2a0885.jpg",
+    "static/media/fox2.jpg": "/static/media/fox2.42257d0e.jpg",
+    "static/media/fox3.jpg": "/static/media/fox3.de1e26cf.jpg",
+    "static/media/fox4.jpg": "/static/media/fox4.e9016ec8.jpg",
+    "static/media/fox5.jpg": "/static/media/fox5.3c9b2a80.jpg",
+    "static/media/fox6.jpg": "/static/media/fox6.e1e027e3.jpg",
+    "static/media/fox7.jpg": "/static/media/fox7.443b90ae.jpg",
+    "static/media/logo.jpg": "/static/media/logo.38da27a4.jpg",
+    "static/media/person01.png": "/static/media/person01.a96901b8.png",
+    "static/media/person02.png": "/static/media/person02.f95ac1bf.png",
+    "static/media/person03.png": "/static/media/person03.8d7d6af2.png",
+    "static/media/person04.png": "/static/media/person04.bd64d8cb.png"
+  },
+  "entrypoints": [
+    "static/js/runtime~app.27401809.js",
+    "static/js/2.18c8d134.chunk.js",
+    "static/js/app.a71c5f3d.chunk.js"
+  ]
+}
