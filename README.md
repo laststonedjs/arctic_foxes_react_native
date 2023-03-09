@@ -12,4 +12,7 @@ deleting and changing existing foxes from the list. Without a backend, I use dat
 ```Goals and Achievements during the construction of the project```
 Through this task and challenge, the biggest challenge for me was sending data between components and calling them through various dynamic forms, cards and lists. Thoroughly reading the react-native documentation, I learned a lot more about FlatList (many of its props), native navigation and, among other things, the search functionality that I implemented on the 'Home' page. As for the 'Details' page, you can find larger pictures, more descriptions with text, as well as our editing section.
 
+For fonts used this great Inter typeface open source font family! 
+[ https://rsms.me/inter/ ]
+
 Enjoy and give me a star if you like it! 🔥🔥
