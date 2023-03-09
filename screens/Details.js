@@ -157,7 +157,6 @@ const Details = ({ route, navigation }) => {
       {/* START OF ADD MODAL */}
       <AddFoxModal
         isVisible={isModalVisible}
-        onCli
       />
       {/* END OF ADD MODAL */}
 
