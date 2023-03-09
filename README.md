@@ -5,7 +5,7 @@
 ```npm start``` from the root directory (dir_name: 'arctic_foxes_rn') and Metro will generate a QR code for scanning (Expo-Go App - we can download it from the play store).
 
 <hr/>
-* Go deeper and get to know my pets from the far north of the planet, this application also offers you the possibility of inserting, 
+Go deeper and get to know my pets from the far north of the planet, this application also offers you the possibility of inserting, 
 deleting and changing existing foxes from the list. Without a backend, I use data object from a local <i>dummyData.js</i> file. 
 <br/> <hr/>
 
