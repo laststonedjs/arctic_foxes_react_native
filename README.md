@@ -15,4 +15,9 @@ Through this task and challenge, the biggest challenge for me was sending data b
 For fonts used this great Inter typeface open source font family! 
 [ https://rsms.me/inter/ ]
 
+/** 
+* Note 
+*/
+When scanning the QR code with the <i>Expo-Go</i> application, your mobile phone must be on the same Wi-Fi network as the PC.
+
 Enjoy and give me a star if you like it! 🔥🔥
