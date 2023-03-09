@@ -8,16 +8,26 @@ export const FoxTitle = ({ title, titleSize, subTitle, subTitleSize }) => {
       <Text style={{
         fontFamily: FONTS.semiBold,
         fontSize: titleSize,
-        color: COLORS.primary
+        color: COLORS.chocolateKisses
       }}>
         {title}
       </Text>
       <Text style={{
         fontFamily: FONTS.regular,
         fontSize: subTitleSize,
-        color: COLORS.primary
+        color: COLORS.chocolateKisses
       }}>
-        <Text style={{ fontFamily: FONTS.semiBold, fontSize: SIZES.medium }}>Kingdom:</Text> {subTitle}
+        <Text style={{
+          fontFamily: FONTS.semiBold,
+          fontSize: SIZES.medium + 2
+        }}>
+          Inhabit{" "}
+        </Text>
+        <Text style={{
+          fontFamily: FONTS.light,
+          color: COLORS.gray,
+          fontSize: SIZES.small + 2
+        }}>Plantae</Text>
       </Text>
     </View>
   )
@@ -38,14 +48,14 @@ export const FoxYears = ({ years }) => {
       <Text style={{
         fontFamily: FONTS.regular,
         fontSize: SIZES.small,
-        color: COLORS.primary
+        color: COLORS.chocolateKisses
       }}>
         Years
       </Text>
       <Text style={{
         fontFamily: FONTS.semiBold,
         fontSize: SIZES.medium,
-        color: COLORS.primary
+        color: COLORS.chocolateKisses
       }}>
         {years}
       </Text>
@@ -58,7 +68,7 @@ export const FoxFood = ({ food }) => {
     <View style={{
       paddingHorizontal: SIZES.font,
       paddingVertical: SIZES.base,
-      backgroundColor: COLORS.lightGray,
+      backgroundColor: COLORS.chocolateKisses,
       justifyContent: 'center',
       alignItems: 'center',
       ...SHADOWS.light,
@@ -68,14 +78,14 @@ export const FoxFood = ({ food }) => {
       <Text style={{
         fontFamily: FONTS.regular,
         fontSize: SIZES.small,
-        color: COLORS.primary
+        color: COLORS.white
       }}>
         Food
       </Text>
       <Text style={{
         fontFamily: FONTS.semiBold,
         fontSize: SIZES.medium,
-        color: COLORS.primary
+        color: COLORS.lightGray
       }}>
         {food}
       </Text>

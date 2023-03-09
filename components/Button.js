@@ -2,11 +2,16 @@ import { TouchableOpacity, View, Text, Image } from 'react-native';
 // constants
 import { COLORS, SIZES, SHADOWS, FONTS } from '../constants';
 
-export const DetailButton = ({ minWidth, fontSize, handlePress, ...props }) => {
+export const DetailButton = ({
+  minWidth,
+  fontSize,
+  handlePress,
+  ...props
+}) => {
   return (
     <TouchableOpacity style={{
-      backgroundColor: COLORS.primary,
-      borderRadius: SIZES.extraLarge,
+      backgroundColor: COLORS.chocolateKisses,
+      borderRadius: SIZES.large,
       minWidth: minWidth,
       padding: SIZES.small,
       ...props
@@ -25,7 +30,12 @@ export const DetailButton = ({ minWidth, fontSize, handlePress, ...props }) => {
   )
 }
 
-export const EditButton = ({ minWidth, fontSize, handlePress, ...props }) => {
+export const EditButton = ({
+  minWidth,
+  fontSize,
+  handlePress,
+  ...props
+}) => {
   return (
     <TouchableOpacity style={{
       backgroundColor: COLORS.primary,
@@ -48,26 +58,37 @@ export const EditButton = ({ minWidth, fontSize, handlePress, ...props }) => {
   )
 }
 
-export const ActionButton = ({ minWidth, fontSize, handlePress, ...props }) => {
+export const ActionButton = ({
+  minWidth,
+  maxWidth,
+  fontSize,
+  handlePress,
+  ...props
+}) => {
   return (
-    <TouchableOpacity style={{
-      backgroundColor: COLORS.primary,
-      borderRadius: SIZES.extraLarge,
-      minWidth: minWidth,
-      padding: SIZES.small,
-      ...props
-    }}
-      onPress={handlePress}
-    >
-      <Text style={{
-        fontFamily: FONTS.semiBold,
-        fontSize: fontSize,
-        color: COLORS.white,
-        textAlign: "center"
-      }}>
-        {props.title}
-      </Text>
-    </TouchableOpacity>
+    <View style={{
+      maxWidth
+    }}>
+      <TouchableOpacity style={{
+        backgroundColor: COLORS.chocolateKisses,
+        borderRadius: SIZES.large,
+        minWidth: minWidth,
+        padding: SIZES.medium,
+        ...props
+      }}
+        onPress={handlePress}
+      >
+        <Text style={{
+          fontFamily: FONTS.semiBold,
+          fontSize: fontSize,
+          color: COLORS.white,
+          textAlign: "center",
+          padding: SIZES.base - 5
+        }}>
+          Save your work {"  "}💾
+        </Text>
+      </TouchableOpacity>
+    </View>
   )
 }
 

@@ -19,17 +19,17 @@ const DetailsDesc = ({ data }) => {
       }}>
         <FoxTitle
           title={data.name}
-          titleSize={SIZES.extraLarge}
+          titleSize={26}
           subTitle={data.domain}
-          subTitleSize={SIZES.font}
+          subTitleSize={18}
         />
       </View>
 
-      <View style={{ marginVertical: SIZES.extraLarge * 1.5 }}>
+      <View style={{ marginVertical: SIZES.extraLarge }}>
         <Text style={{
           fontSize: SIZES.font,
-          fontFamily: FONTS.semiBold,
-          color: COLORS.primary
+          fontFamily: FONTS.regular,
+          color: COLORS.chocolateKisses
         }}>
           Description
         </Text>

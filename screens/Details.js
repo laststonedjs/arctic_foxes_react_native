@@ -1,23 +1,34 @@
-import React, { useState } from 'react';
-// expo image-picker
-import * as ImagePicker from 'expo-image-picker';
+import React, { useState, useLayoutEffect } from 'react';
+import Toast from 'react-native-simple-toast';
 import {
-  Text, View, SafeAreaView,
-  Image, StatusBar, FlatList,
-  TouchableOpacity, Modal, TextInput, Button,
+  Text,
+  View,
+  SafeAreaView,
+  Image,
+  StatusBar,
+  FlatList,
+  TouchableOpacity,
+  Modal,
+  TextInput,
 } from 'react-native';
 // components
 import {
-  ImageViewer, CircleButton,
-  SubInfo, FocusedStatusBar,
-  DetailsDesc, DetailsFox, AddFox
+  ImageViewer,
+  CircleButton,
+  ActionButton,
+  SubInfo,
+  FocusedStatusBar,
+  DetailsDesc,
+  DetailsFox,
+  AddFoxModal
 } from '../components';
 // constants
 import { COLORS, SIZES, FONTS, assets, foxData } from '../constants';
-import Toast from 'react-native-simple-toast';
+// expo image-picker
+import * as ImagePicker from 'expo-image-picker';
 
 
-// DetailsHeader component
+// DetailsHeader
 const DetailsHeader = ({ data, navigation }) => (
   <View style={{ width: "100%", height: 373 }}>
     <Image
@@ -30,7 +41,7 @@ const DetailsHeader = ({ data, navigation }) => (
       imgUrl={assets.leftArrow}
       handlePress={() => navigation.goBack()}
       left={15}
-      top={StatusBar.currentHeight + 5}
+      top={StatusBar.currentHeight - 4}
     />
   </View>
 )
@@ -47,7 +58,7 @@ const Details = ({ route, navigation }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
 
-  // pick the image
+  // here we pick the image
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -68,7 +79,6 @@ const Details = ({ route, navigation }) => {
     }
   };
 
-
   const onPressItem = (item) => {
     setIsModalVisible(true);
     setInputText(item.name);
@@ -77,6 +87,17 @@ const Details = ({ route, navigation }) => {
     // setSelectedImage(item.image);
     setEditItem(item.id);
   }
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => {
+        <ActionButton
+          title="Add Fox"
+          onPress={() => setIsModalVisible(true)}
+        />
+      }
+    })
+  }, [navigation]);
 
   const renderItem = ({ item, index }) => {
     return (
@@ -104,7 +125,6 @@ const Details = ({ route, navigation }) => {
     )
   }
 
-
   const handleEditItem = (editItem) => {
     const newData = foxes.map(item => {
       if (item.id == editItem) {
@@ -122,6 +142,7 @@ const Details = ({ route, navigation }) => {
 
   const onPressSaveEdit = () => {
     handleEditItem(editItem); // save user input to dummy data
+    Toast.showWithGravity("Congrat's, successfully edited your favorite Arctic Fox!", Toast.LONG, Toast.TOP);
     setIsModalVisible(false); // close the modal
   }
 
@@ -132,6 +153,13 @@ const Details = ({ route, navigation }) => {
         backgroundColor="transparent"
         transluent={true}
       />
+
+      {/* START OF ADD MODAL */}
+      <AddFoxModal
+        isVisible={isModalVisible}
+        onCli
+      />
+      {/* END OF ADD MODAL */}
       <FlatList
         data={foxData}
         renderItem={renderItem}
@@ -149,10 +177,10 @@ const Details = ({ route, navigation }) => {
               <Text style={{
                 fontSize: SIZES.medium,
                 fontFamily: FONTS.semiBold,
-                color: COLORS.primary,
-                marginTop: SIZES.font
+                color: COLORS.chocolateKisses,
+                marginTop: SIZES.small
               }}>
-                Click on the Fox as desired and Edit  ⛏️
+                Click and Edit  ⛏️
               </Text>
             </View>
 
@@ -160,6 +188,7 @@ const Details = ({ route, navigation }) => {
         )}
       />
 
+      {/* START OF EDIT MODAL */}
       <Modal
         animationType='fade'
         visible={isModalVisible}
@@ -167,130 +196,172 @@ const Details = ({ route, navigation }) => {
       >
         <View style={{
           flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: COLORS.lightGray
+          backgroundColor: COLORS.cultural
         }}>
           <Text style={{
             fontFamily: FONTS.medium,
-            fontSize: SIZES.large * 2,
-            padding: SIZES.medium
-          }}>Edit Modal</Text>
-
-          {/* EDIT NAME */}
-          <Text style={{
-            fontFamily: FONTS.semiBold,
-            fontSize: SIZES.font,
-            padding: SIZES.base,
-            marginTop: SIZES.font,
-            marginRight: SIZES.extraLarge * 10.8
-          }}
-          >
-            Edit Fox Name:
+            fontSize: SIZES.large,
+            color: COLORS.chocolateKisses,
+            marginVertical: SIZES.font * 2,
+            paddingHorizontal: SIZES.medium
+          }}>
+            Oi 🦊{" "}Fox{" "}🦊Lover,{"\n"}
+            Welcome to the Arctic phlegmatic nest
           </Text>
-          <TextInput
-            style={{
-              width: "90%",
-              height: 45,
-              borderColor: COLORS.purpleLight,
-              borderWidth: 1,
-              borderRadius: 2,
-              fontSize: SIZES.font,
-              fontFamily: FONTS.light,
-              color: COLORS.primary,
-              paddingHorizontal: SIZES.base
-            }}
-            onChangeText={(name) => setInputText(name)}
-            defaultValue={inputText}
-            editable={true}
-            multiline={false}
-            maxLength={200}
-          />
 
-          {/* EDIT AGE */}
           <Text style={{
-            fontFamily: FONTS.semiBold,
-            fontSize: SIZES.font,
-            padding: SIZES.base,
-            marginTop: SIZES.font,
-            marginRight: SIZES.extraLarge * 11
-          }}
-          >
-            Edit Fox Years:
+            fontFamily: FONTS.light,
+            fontSize: SIZES.medium,
+            padding: SIZES.font,
+          }}>
+            You want to change something? {"\n"}
+            What will happen if we make his/her older?
           </Text>
-          <TextInput
-            style={{
-              width: "90%",
-              height: 45,
-              borderColor: COLORS.purpleLight,
-              borderWidth: 1,
-              borderRadius: 2,
-              fontSize: SIZES.font,
-              fontFamily: FONTS.light,
-              color: COLORS.primary,
-              paddingHorizontal: SIZES.base
-            }}
-            onChangeText={(age) => setInputAge(age)}
-            defaultValue={inputAge}
-            editable={true}
-            multiline={false}
-            maxLength={200}
-          />
 
-          {/* EDIT DOMAIN */}
-          <Text style={{
-            fontFamily: FONTS.semiBold,
-            fontSize: SIZES.font,
-            padding: SIZES.base,
-            marginTop: SIZES.font,
-            marginRight: SIZES.extraLarge * 10
-          }}
-          >
-            Edit Fox Kingdom:
-          </Text>
-          <TextInput
-            style={{
-              width: "90%",
-              height: 45,
-              borderColor: COLORS.purpleLight,
-              borderWidth: 1,
-              fontSize: SIZES.font,
-              borderRadius: 2,
-              fontFamily: FONTS.light,
-              color: COLORS.primary,
-              paddingHorizontal: SIZES.base
-            }}
-            onChangeText={(domain) => setInputDomain(domain)}
-            defaultValue={inputDomain}
-            editable={true}
-            multiline={false}
-            maxLength={200}
-          />
-
-          {/* IMAGE PICKER */}
-          <TouchableOpacity
-            onPress={() => pickImage()}
-          >
-            <View style={{
-              borderColor: COLORS.purpleLight,
-              borderWidth: 1,
-              paddingHorizontal: SIZES.base,
-              height: 45,
-              marginTop: SIZES.medium + 5,
-              borderRadius: 2,
-              backgroundColor: COLORS.white
+          {/* NAME */}
+          <View style={{
+            width: "60%",
+            marginLeft: SIZES.small
+          }}>
+            <Text style={{
+              fontFamily: FONTS.semiBold,
+              fontSize: SIZES.medium,
+              padding: SIZES.base,
+              marginTop: SIZES.font,
+              color: COLORS.chocolateKisses
             }}
             >
+              Edit Name:
+            </Text>
+            <View style={{
+              paddingHorizontal: SIZES.base - 2
+            }}>
+              <TextInput
+                style={{
+                  height: 45,
+                  borderColor: COLORS.purpleLight,
+                  borderWidth: 1,
+                  borderRadius: SIZES.font,
+                  fontSize: SIZES.small,
+                  fontFamily: FONTS.light,
+                  color: COLORS.primary,
+                  paddingHorizontal: SIZES.small
+                }}
+                onChangeText={(name) => setInputText(name)}
+                defaultValue={inputText}
+                editable={true}
+                multiline={false}
+                maxLength={200}
+              />
+            </View>
+          </View>
+
+          {/* YEARS */}
+          <View style={{
+            width: "60%",
+            marginLeft: SIZES.small
+          }}>
+            <Text style={{
+              fontFamily: FONTS.semiBold,
+              fontSize: SIZES.medium,
+              padding: SIZES.base,
+              marginTop: SIZES.font,
+              color: COLORS.chocolateKisses
+            }}
+            >
+              Edit Years:
+            </Text>
+            <View style={{
+              paddingHorizontal: SIZES.base - 2
+            }}>
+              <TextInput
+                style={{
+                  height: 45,
+                  borderColor: COLORS.purpleLight,
+                  borderWidth: 1,
+                  borderRadius: SIZES.font,
+                  fontSize: SIZES.small,
+                  fontFamily: FONTS.light,
+                  color: COLORS.primary,
+                  paddingHorizontal: SIZES.small
+                }}
+                onChangeText={(age) => setInputAge(age)}
+                defaultValue={inputAge}
+                editable={true}
+                multiline={false}
+                maxLength={200}
+              />
+            </View>
+          </View>
+
+          {/* DOMAIN */}
+          <View style={{
+            width: "60%",
+            marginLeft: SIZES.small
+          }}>
+            <Text style={{
+              fontFamily: FONTS.semiBold,
+              fontSize: SIZES.medium,
+              padding: SIZES.base,
+              marginTop: SIZES.font,
+              color: COLORS.chocolateKisses
+            }}
+            >
+              Edit Domain:
+            </Text>
+            <View style={{
+              paddingHorizontal: SIZES.base - 2
+            }}>
+              <TextInput
+                style={{
+                  height: 45,
+                  borderColor: COLORS.purpleLight,
+                  borderWidth: 1,
+                  borderRadius: SIZES.font,
+                  fontSize: SIZES.small,
+                  fontFamily: FONTS.light,
+                  color: COLORS.primary,
+                  paddingHorizontal: SIZES.small
+                }}
+                onChangeText={(domain) => setInputDomain(domain)}
+                defaultValue={inputDomain}
+                editable={true}
+                multiline={false}
+                maxLength={200}
+              />
+            </View>
+          </View>
+
+          {/* IMAGE PICKER */}
+          <View style={{
+            marginVertical: SIZES.large * 2,
+            marginHorizontal: SIZES.small * 1.5,
+            width: "50%"
+          }}>
+            <TouchableOpacity
+              style={{
+                borderColor: COLORS.purpleLight,
+                borderWidth: 1,
+                paddingVertical: SIZES.small,
+                paddingHorizontal: SIZES.small,
+                alignItems: "center",
+                borderRadius: SIZES.small,
+                backgroundColor: COLORS.lightKisses,
+              }}
+              onPress={() => pickImage()}
+            >
               <Text style={{
-                padding: SIZES.base * 1.2,
-                fontFamily: FONTS.semiBold,
-                fontSize: SIZES.font,
+                padding: SIZES.font,
+                fontFamily: FONTS.light,
+                fontSize: SIZES.medium,
+                alignItems: "center",
+                color: COLORS.chocolateKisses,
               }}
               >
-                Pick Image
+                Pick Image{"   "}🖼️
               </Text>
-            </View>
-          </TouchableOpacity>
+            </TouchableOpacity>
+          </View>
           <ImageViewer
             selectedImage={selectedImage}
           />
@@ -302,34 +373,22 @@ const Details = ({ route, navigation }) => {
           }
 
           {/* SAVE BUTTON */}
-          <TouchableOpacity
-            onPress={() => {
-              onPressSaveEdit();
-              Toast.showWithGravity("Congrat's, successfully edited your favorite Arctic Fox!", Toast.LONG, Toast.TOP)
-            }}
-            style={{
-              height: 50,
-              backgroundColor: COLORS.gray,
-              paddingHorizontal: 40,
-              borderRadius: 2,
-              alignItems: "center",
-              justifyContent: "center",
-              marginTop: SIZES.extraLarge * 5
-            }}
-          >
-            <Text style={{
-              fontFamily: FONTS.semiBold,
-              fontSize: SIZES.large,
-              color: COLORS.white,
-              marginHorizontal: SIZES.font,
-            }}
-            >
-              Save
-            </Text>
-          </TouchableOpacity>
+          <View style={{
+            marginVertical: SIZES.large * 5,
+            marginLeft: SIZES.extraLarge * 2,
+            padding: SIZES.medium,
+          }}>
+            <ActionButton
+              minWidth={120}
+              maxWidth={260}
+              fontSize={SIZES.font}
+              handlePress={() => onPressSaveEdit()}
+            />
+          </View>
 
         </View>
       </Modal>
+      {/* END OF EDIT MODAL */}
     </SafeAreaView>
   )
 }

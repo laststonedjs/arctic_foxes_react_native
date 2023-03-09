@@ -1,0 +1,5 @@
+https://exp.host/@neonada/arctic_foxes_rn/index.exp?sdkVersion=46.0.0 
+https://expo.fyi/manifest-url
+
+https://expo.dev/@neonada/arctic_foxes_rn?serviceType=classic&distribution=expo-go 
+https://expo.fyi/project-page

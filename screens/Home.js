@@ -24,8 +24,7 @@ const Home = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <FocusedStatusBar background={COLORS.primary} />
-
+      <FocusedStatusBar background={COLORS.chocolateKisses} />
       <View style={{ flex: 1 }}>
         <View style={{ zIndex: 0 }}>
           <FlatList
@@ -45,8 +44,8 @@ const Home = () => {
           left: 0,
           zIndex: -1,
         }}>
-          <View style={{ height: 300, backgroundColor: COLORS.primary }} />
-          <View style={{ flex: 1, backgroundColor: COLORS.white }} />
+          <View style={{ height: 300, backgroundColor: COLORS.chocolateKisses }} />
+          <View style={{ flex: 1, backgroundColor: COLORS.cultural }} />
         </View>
       </View>
     </SafeAreaView>

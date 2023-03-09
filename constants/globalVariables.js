@@ -2,9 +2,12 @@ export const COLORS = {
   primary: "#001F2D",
   secondary: "#4D626C",
   white: "#FFF",
+  black: "#000",
   gray: "#74858C",
   lightGray: "#E3E6E8",
-  purpleLight: "#9F80FF",
+  chocolateKisses: "#3C1421",
+  lightKisses: "#f2d9e1",
+  cultural: "#F5F5F5",
 };
 
 export const FONTS = {
