@@ -27,7 +27,7 @@ export const FoxTitle = ({ title, titleSize, subTitle, subTitleSize }) => {
           fontFamily: FONTS.light,
           color: COLORS.gray,
           fontSize: SIZES.small + 2
-        }}>Plantae</Text>
+        }}>{subTitle}</Text>
       </Text>
     </View>
   )

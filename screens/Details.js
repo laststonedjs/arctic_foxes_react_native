@@ -150,7 +150,7 @@ const Details = ({ route, navigation }) => {
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar
         barStyle="dark-content"
-        backgroundColor="transparent"
+        backgroundColor={COLORS.chocolateKisses}
         transluent={true}
       />
 
@@ -160,6 +160,7 @@ const Details = ({ route, navigation }) => {
         onCli
       />
       {/* END OF ADD MODAL */}
+
       <FlatList
         data={foxData}
         renderItem={renderItem}
@@ -194,34 +195,47 @@ const Details = ({ route, navigation }) => {
         visible={isModalVisible}
         onRequestClose={() => setIsModalVisible(false)}
       >
-        <View style={{
-          flex: 1,
-          backgroundColor: COLORS.cultural
-        }}>
-          <Text style={{
-            fontFamily: FONTS.medium,
-            fontSize: SIZES.large,
-            color: COLORS.chocolateKisses,
-            marginVertical: SIZES.font * 2,
-            paddingHorizontal: SIZES.medium
-          }}>
-            Oi 🦊{" "}Fox{" "}🦊Lover,{"\n"}
-            Welcome to the Arctic phlegmatic nest
-          </Text>
+        <View style={{ backgroundColor: COLORS.cultural, flex: 1 }}>
+          <View style={{ zIndex: 0, marginBottom: SIZES.medium }}>
+            <Text style={{
+              fontFamily: FONTS.semiBold,
+              fontSize: SIZES.large,
+              color: COLORS.white,
+              marginVertical: SIZES.large,
+              paddingHorizontal: SIZES.large,
+            }}>
+              Oi Fox Lover,{"\n"}
+              Welcome to the Arctic phlegmatic nest
+            </Text>
 
-          <Text style={{
-            fontFamily: FONTS.light,
-            fontSize: SIZES.medium,
-            padding: SIZES.font,
+            <Text style={{
+              fontFamily: FONTS.light,
+              fontSize: SIZES.small + 3,
+              padding: SIZES.font + 2,
+              color: COLORS.gray
+            }}>
+              You want to change something? {"\n"}
+              What will happen if we make his/her older?
+            </Text>
+          </View>
+
+          <View style={{
+            position: "absolute",
+            top: 0,
+            bottom: 0,
+            right: 0,
+            left: 0,
+            zIndex: -1,
           }}>
-            You want to change something? {"\n"}
-            What will happen if we make his/her older?
-          </Text>
+            <View style={{ height: 180, backgroundColor: COLORS.chocolateKisses }} />
+            <View style={{ flex: 1, backgroundColor: COLORS.cultural }} />
+          </View>
 
           {/* NAME */}
           <View style={{
             width: "60%",
-            marginLeft: SIZES.small
+            marginLeft: SIZES.small,
+            marginTop: 25
           }}>
             <Text style={{
               fontFamily: FONTS.semiBold,
@@ -248,7 +262,7 @@ const Details = ({ route, navigation }) => {
                   paddingHorizontal: SIZES.small
                 }}
                 onChangeText={(name) => setInputText(name)}
-                defaultValue={inputText}
+                defaultValue={`🦊 ${inputText}`}
                 editable={true}
                 multiline={false}
                 maxLength={200}
@@ -374,7 +388,7 @@ const Details = ({ route, navigation }) => {
 
           {/* SAVE BUTTON */}
           <View style={{
-            marginVertical: SIZES.large * 5,
+            marginVertical: SIZES.large * 4,
             marginLeft: SIZES.extraLarge * 2,
             padding: SIZES.medium,
           }}>
@@ -385,7 +399,6 @@ const Details = ({ route, navigation }) => {
               handlePress={() => onPressSaveEdit()}
             />
           </View>
-
         </View>
       </Modal>
       {/* END OF EDIT MODAL */}
