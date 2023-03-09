@@ -1,4 +1,4 @@
-# Arctic Foxes (React Native, Expo-Go application)
+# 🦊 Arctic Foxes 🦊 (React Native, Expo-Go application)
 <hr/>
 
 To start the application, it is necessary to start the command: <br/>
