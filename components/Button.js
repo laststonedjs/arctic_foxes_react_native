@@ -30,6 +30,36 @@ export const DetailButton = ({
   )
 }
 
+export const AddButton = ({
+  minWidth,
+  maxWidth,
+  fontSize,
+  handlePress,
+  ...props
+}) => {
+  return (
+    <TouchableOpacity style={{
+      backgroundColor: COLORS.chocolateKisses,
+      borderRadius: SIZES.large,
+      minWidth: minWidth,
+      maxWidth: maxWidth,
+      padding: SIZES.small,
+      ...props
+    }}
+      onPress={handlePress}
+    >
+      <Text style={{
+        fontFamily: FONTS.semiBold,
+        fontSize: fontSize,
+        color: COLORS.white,
+        textAlign: "center"
+      }}>
+        Add Fox
+      </Text>
+    </TouchableOpacity>
+  )
+}
+
 export const EditButton = ({
   minWidth,
   fontSize,

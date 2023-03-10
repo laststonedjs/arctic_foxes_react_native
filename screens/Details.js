@@ -10,17 +10,20 @@ import {
   TouchableOpacity,
   Modal,
   TextInput,
+  Button,
+  StyleSheet
 } from 'react-native';
 // components
 import {
   ImageViewer,
   CircleButton,
   ActionButton,
+  AddButton,
   SubInfo,
   FocusedStatusBar,
   DetailsDesc,
   DetailsFox,
-  AddFoxModal
+  AddModal
 } from '../components';
 // constants
 import { COLORS, SIZES, FONTS, assets, foxData, SHADOWS } from '../constants';
@@ -29,7 +32,7 @@ import * as ImagePicker from 'expo-image-picker';
 
 
 // DetailsHeader
-const DetailsHeader = ({ data, navigation }) => (
+export const DetailsHeader = ({ data, navigation }) => (
   <View style={{ width: "100%", height: 373 }}>
     <Image
       source={data.image}
@@ -43,6 +46,7 @@ const DetailsHeader = ({ data, navigation }) => (
       left={15}
       top={StatusBar.currentHeight - 4}
     />
+
   </View>
 )
 
@@ -53,10 +57,10 @@ const Details = ({ route, navigation }) => {
   const [inputAge, setInputAge] = useState();
   const [inputDomain, setInputDomain] = useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
   const [isRender, setIsRender] = useState(false);
   const [editItem, setEditItem] = useState();
   const [selectedImage, setSelectedImage] = useState(null);
-
 
   // here we pick the image
   const pickImage = async () => {
@@ -88,17 +92,6 @@ const Details = ({ route, navigation }) => {
     setEditItem(item.id);
   }
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerRight: () => {
-        <ActionButton
-          title="Add Fox"
-          onPress={() => setIsModalVisible(true)}
-        />
-      }
-    })
-  }, [navigation]);
-
   const renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity
@@ -112,14 +105,6 @@ const Details = ({ route, navigation }) => {
         }}
       >
         <DetailsFox foxes={item} />
-        {/* <Image
-          source={item.image}
-          resizeMode="contain"
-          style={{
-            width: 85,
-            height: 85
-          }}
-        /> */}
         <Text style={{ display: "none" }}>
           {item.name}
         </Text>
@@ -162,11 +147,7 @@ const Details = ({ route, navigation }) => {
         transluent={true}
       />
 
-      {/* START OF ADD MODAL */}
-      <AddFoxModal
-        isVisible={isModalVisible}
-      />
-      {/* END OF ADD MODAL */}
+
 
       <FlatList
         data={foxData}
@@ -179,6 +160,7 @@ const Details = ({ route, navigation }) => {
           <>
             <DetailsHeader data={data} navigation={navigation} />
             <SubInfo years={data.age} food={data.food} />
+
             <View style={{ padding: SIZES.font }}>
               <DetailsDesc data={data} />
               <Text style={{
@@ -193,6 +175,9 @@ const Details = ({ route, navigation }) => {
           </>
         )}
       />
+
+
+
 
       {/* START OF EDIT MODAL */}
       <Modal
@@ -399,8 +384,6 @@ const Details = ({ route, navigation }) => {
             width: "45%",
             marginLeft: SIZES.medium,
             paddingVertical: SIZES.base,
-            borderWidth: 1,
-            borderColor: COLORS.lightKisses
           }}>
             <ImageViewer
               selectedImage={selectedImage}
@@ -434,5 +417,14 @@ const Details = ({ route, navigation }) => {
     </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  buttonOpen: {
+
+  },
+  buttonClose: {
+
+  }
+})
 
 export default Details;
