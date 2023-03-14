@@ -1,13 +1,36 @@
 import { View, TextInput, Modal, Text, SafeAreaView, Dimensions, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
+import Toast from 'react-native-simple-toast';
 // constants
-import { COLORS, FONTS, SHADOWS, SIZES } from '../constants';
+import { COLORS, FONTS, SHADOWS, SIZES, assets, foxData } from '../constants';
 
 // dimensions
 const WIDTH_MODAL = Dimensions.get('window').width;
 const HEIGHT_MODAL = 600;
 
 export const AddModal = (props) => {
+  const [newFoxName, setNewFoxName] = useState('');
+  const [newFoxAge, setNewFoxAge] = useState('');
+
+  const generateKey = (numberOfCharacters) => {
+    return require('random-string')({ length: numberOfCharacters });
+  }
+
+  const addToList = () => {
+    if (newFoxName.length == 0 || newFoxAge.length == 0) {
+      Toast.showWithGravity("Please fill in all input fields!", Toast.LONG, Toast.TOP);
+      return;
+    }
+    const newKey = generateKey(24);
+    const newFox = {
+      key: newKey,
+      name: newFoxName,
+      image: assets.fox7,
+      age: newFoxAge
+    }
+    foxData.push(newFox);
+    closeModal();
+  }
 
   const closeModal = (bool) => {
     props.swapModalVisible(bool);
@@ -48,6 +71,42 @@ export const AddModal = (props) => {
                 </Text>
               </Text>
             </View>
+            <Text
+              style={{
+                fontSize: SIZES.font,
+                fontFamily: FONTS.semiBold,
+                marginVertical: SIZES.medium * 2,
+                color: COLORS.chocolateKisses,
+                textAlign: "center",
+                letterSpacing: SIZES.base / 4
+              }}
+            >
+              Add a Fox with new information!
+            </Text>
+            <TextInput
+              style={{
+                height: 30,
+                borderBottomColor: COLORS.gray,
+                marginHorizontal: SIZES.large,
+                marginVertical: SIZES.large * 1.5,
+                borderBottomWidth: 1
+              }}
+              onChangeText={(text) => setNewFoxName({ newFoxName: text })}
+              placeholder="Enter the name of your new Fox"
+              value={newFoxName}
+            />
+            <TextInput
+              style={{
+                height: 30,
+                borderBottomColor: COLORS.gray,
+                marginHorizontal: SIZES.large,
+                marginBottom: SIZES.font,
+                borderBottomWidth: 1
+              }}
+              onChangeText={(text) => setNewFoxAge({ newFoxAge: text })}
+              placeholder="Enter how old your Fox is"
+              value={newFoxAge}
+            />
           </View>
           <View style={{
             width: "100%",
@@ -63,7 +122,7 @@ export const AddModal = (props) => {
                 borderRadius: SIZES.large,
                 padding: SIZES.small,
               }}
-              onPress={() => { }}
+              onPress={() => addToList()}
             >
               <Text
                 style={{
