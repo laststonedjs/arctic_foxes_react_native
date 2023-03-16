@@ -11,7 +11,7 @@ Go deeper and get to know my pets from the far north of the planet, this applica
 deleting and changing existing foxes from the list. Without a backend, I use data object from a local <i>dummyData.js</i> file. 
 <br/> <hr/>
 
-- `Goals and Achievements during the construction of the project`
+- <h2>Goals and Achievements during the construction of the project</h2>
   Through this task and challenge, the biggest challenge for me was sending data between components and calling them through various dynamic forms, cards and lists. Thoroughly reading the react-native documentation, I learned a lot more about FlatList (many of its props), native navigation and, among other things, the search functionality that I implemented on the 'Home' page. As for the 'Details' page, you can find larger pictures, more descriptions with text, as well as our editing section.
 
 - For fonts used this great Inter typeface open source font family!
