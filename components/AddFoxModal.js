@@ -6,15 +6,25 @@ import { COLORS, FONTS, SHADOWS, SIZES, assets, foxData } from '../constants';
 
 // dimensions
 const WIDTH_MODAL = Dimensions.get('window').width;
-const HEIGHT_MODAL = 600;
+const HEIGHT_MODAL = 650;
 
 export const AddModal = (props) => {
+  const [foxes, setFoxes] = useState(foxData);
   const [newFoxName, setNewFoxName] = useState('');
   const [newFoxAge, setNewFoxAge] = useState('');
+  const [newFoxDomain, setNewFoxDomain] = useState('');
 
   const generateKey = (numberOfCharacters) => {
     return require('random-string')({ length: numberOfCharacters });
   }
+
+  const handleOnChangeText = (text, value) => {
+    if (value === 'newFoxName') setNewFoxName(text);
+    if (value === 'newFoxAge') setNewFoxAge(text);
+    if (value === 'newFoxDomain') setNewFoxDomain(text);
+  };
+
+  console.log(newFoxName, newFoxAge, newFoxDomain);
 
   const addToList = () => {
     if (newFoxName.length == 0 || newFoxAge.length == 0) {
@@ -28,8 +38,7 @@ export const AddModal = (props) => {
       image: assets.fox7,
       age: newFoxAge
     }
-    foxData.push(newFox);
-    closeModal();
+    setFoxes(newFox);
   }
 
   const closeModal = (bool) => {
@@ -56,8 +65,10 @@ export const AddModal = (props) => {
           }}
           >
             <View style={{
-              paddingHorizontal: SIZES.font
-            }}>
+              paddingHorizontal: SIZES.font,
+              paddingVertical: SIZES.font
+            }}
+            >
               <Text style={{
                 marginTop: SIZES.large,
                 marginHorizontal: SIZES.base,
@@ -73,40 +84,57 @@ export const AddModal = (props) => {
             </View>
             <Text
               style={{
-                fontSize: SIZES.font,
+                fontSize: SIZES.medium,
                 fontFamily: FONTS.semiBold,
                 marginVertical: SIZES.medium * 2,
                 color: COLORS.chocolateKisses,
                 textAlign: "center",
-                letterSpacing: SIZES.base / 4
+                letterSpacing: SIZES.base / 5
               }}
             >
               Add a Fox with new information!
             </Text>
-            <TextInput
+            <View
               style={{
-                height: 30,
-                borderBottomColor: COLORS.gray,
-                marginHorizontal: SIZES.large,
-                marginVertical: SIZES.large * 1.5,
-                borderBottomWidth: 1
+                marginVertical: SIZES.medium,
               }}
-              onChangeText={(text) => setNewFoxName({ newFoxName: text })}
-              placeholder="Enter the name of your new Fox"
-              value={newFoxName}
-            />
-            <TextInput
-              style={{
-                height: 30,
-                borderBottomColor: COLORS.gray,
-                marginHorizontal: SIZES.large,
-                marginBottom: SIZES.font,
-                borderBottomWidth: 1
-              }}
-              onChangeText={(text) => setNewFoxAge({ newFoxAge: text })}
-              placeholder="Enter how old your Fox is"
-              value={newFoxAge}
-            />
+            >
+              <TextInput
+                style={{
+                  height: 30,
+                  borderBottomColor: COLORS.gray,
+                  marginHorizontal: SIZES.large,
+                  marginVertical: SIZES.medium,
+                  borderBottomWidth: 1
+                }}
+                onChangeText={(text) => handleOnChangeText(text, 'newFoxName')}
+                placeholder="Enter the NAME of your new Fox"
+                value={newFoxName}
+              />
+              <TextInput
+                style={{
+                  height: 30,
+                  borderBottomColor: COLORS.gray,
+                  marginHorizontal: SIZES.large,
+                  marginBottom: SIZES.font + 2,
+                  borderBottomWidth: 1
+                }}
+                onChangeText={(text) => handleOnChangeText(text, 'newFoxAge')}
+                placeholder="Enter how OLD your Fox is"
+                value={newFoxAge}
+              />
+              <TextInput
+                style={{
+                  height: 30,
+                  borderBottomColor: COLORS.gray,
+                  marginHorizontal: SIZES.large,
+                  borderBottomWidth: 1
+                }}
+                onChangeText={(text) => handleOnChangeText(text, 'newFoxDomain')}
+                placeholder="Enter where your fox COMES FROM"
+                value={newFoxDomain}
+              />
+            </View>
           </View>
           <View style={{
             width: "100%",

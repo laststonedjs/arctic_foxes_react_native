@@ -146,9 +146,6 @@ const Details = ({ route, navigation }) => {
         backgroundColor={COLORS.chocolateKisses}
         transluent={true}
       />
-
-
-
       <FlatList
         data={foxData}
         renderItem={renderItem}
@@ -175,9 +172,6 @@ const Details = ({ route, navigation }) => {
           </>
         )}
       />
-
-
-
 
       {/* START OF EDIT MODAL */}
       <Modal
