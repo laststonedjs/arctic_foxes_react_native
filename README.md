@@ -4,7 +4,7 @@
 
 - To start the application, it is necessary to start the command: <br/>
 `npm start` from the root directory (dir_name: 'arctic_foxes_rn') and Metro will generate a QR code for scanning (Expo-Go App - we can download it from the play store).
-<h3>If by any chance it doesn't compile on the first try, just click 'R' in the terminal or scan the qr code again</h3>
+> > If by any chance it doesn't compile on the first try, just click 'R' in the terminal or scan the qr code again
 
 <hr/>
 Go deeper and get to know my pets from the far north of the planet, this application also offers you the possibility of inserting, 
