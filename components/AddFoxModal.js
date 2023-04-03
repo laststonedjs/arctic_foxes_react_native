@@ -3,20 +3,17 @@ import React, { useState } from 'react';
 import Toast from 'react-native-simple-toast';
 // constants
 import { COLORS, FONTS, SHADOWS, SIZES, assets, foxData } from '../constants';
+import { AddButton } from './Button';
 
 // dimensions
 const WIDTH_MODAL = Dimensions.get('window').width;
 const HEIGHT_MODAL = 650;
 
-export const AddModal = (props) => {
+export const AddModal = ({ swapModalVisible, onSubmit }) => {
   const [foxes, setFoxes] = useState(foxData);
   const [newFoxName, setNewFoxName] = useState('');
   const [newFoxAge, setNewFoxAge] = useState('');
   const [newFoxDomain, setNewFoxDomain] = useState('');
-
-  const generateKey = (numberOfCharacters) => {
-    return require('random-string')({ length: numberOfCharacters });
-  }
 
   const handleOnChangeText = (text, value) => {
     if (value === 'newFoxName') setNewFoxName(text);
@@ -26,23 +23,22 @@ export const AddModal = (props) => {
 
   console.log(newFoxName, newFoxAge, newFoxDomain);
 
-  const addToList = () => {
-    if (newFoxName.length == 0 || newFoxAge.length == 0) {
+  const handleSubmit = () => {
+    if (newFoxName.length == 0 || newFoxAge.length == 0 || newFoxDomain.length == 0) {
       Toast.showWithGravity("Please fill in all input fields!", Toast.LONG, Toast.TOP);
       return;
     }
-    const newKey = generateKey(24);
-    const newFox = {
-      key: newKey,
-      name: newFoxName,
-      image: assets.fox7,
-      age: newFoxAge
-    }
-    setFoxes(newFox);
+
+    onSubmit(newFoxName, newFoxAge, newFoxDomain);
+    setNewFoxName('');
+    setNewFoxAge('');
+    setNewFoxDomain('');
+
+    closeModal();
   }
 
   const closeModal = (bool) => {
-    props.swapModalVisible(bool);
+    swapModalVisible(bool);
   }
 
   return (
@@ -86,7 +82,7 @@ export const AddModal = (props) => {
               style={{
                 fontSize: SIZES.medium,
                 fontFamily: FONTS.semiBold,
-                marginVertical: SIZES.medium * 2,
+                marginBottom: SIZES.large * 2,
                 color: COLORS.chocolateKisses,
                 textAlign: "center",
                 letterSpacing: SIZES.base / 5
@@ -96,7 +92,7 @@ export const AddModal = (props) => {
             </Text>
             <View
               style={{
-                marginVertical: SIZES.medium,
+                marginTop: SIZES.large * 2,
               }}
             >
               <TextInput
@@ -140,26 +136,9 @@ export const AddModal = (props) => {
             width: "100%",
             flexDirection: "row"
           }}>
-            <TouchableOpacity
-              style={{
-                flex: 1,
-                paddingVertical: SIZES.font,
-                marginVertical: SIZES.font,
-                alignItems: "center",
-                backgroundColor: COLORS.chocolateKisses,
-                borderRadius: SIZES.large,
-                padding: SIZES.small,
-              }}
-              onPress={() => addToList()}
-            >
-              <Text
-                style={{
-                  color: COLORS.cultural,
-                }}
-              >
-                Add
-              </Text>
-            </TouchableOpacity>
+            <AddButton
+              handlePress={handleSubmit}
+            />
             <TouchableOpacity
               style={{
                 flex: 1,

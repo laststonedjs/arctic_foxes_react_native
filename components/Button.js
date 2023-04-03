@@ -39,8 +39,11 @@ export const AddButton = ({
 }) => {
   return (
     <TouchableOpacity style={{
+      flex: 1,
       backgroundColor: COLORS.chocolateKisses,
       borderRadius: SIZES.large,
+      marginVertical: SIZES.font,
+      marginHorizontal: SIZES.base,
       minWidth: minWidth,
       maxWidth: maxWidth,
       padding: SIZES.small,

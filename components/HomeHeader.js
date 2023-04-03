@@ -20,6 +20,15 @@ const HomeHeader = ({ onSearch }) => {
     setIsAddModalVisible(bool);
   }
 
+  const handleOnSubmit = (newFoxName, newFoxAge, newFoxDomain) => {
+    const fox = {
+      newFoxName,
+      newFoxAge,
+      newFoxDomain
+    };
+    console.log(fox);
+  }
+
   return (
     <SafeAreaView>
       <View style={{
@@ -114,6 +123,7 @@ const HomeHeader = ({ onSearch }) => {
           >
             <AddModal
               swapModalVisible={swapModalVisible}
+              onSubmit={handleOnSubmit}
             />
           </Modal>
         </View>
