@@ -23,11 +23,11 @@ deleting and changing existing foxes from the list. Without a backend, I use dat
 Enjoy and give me a star if you like it! 🔥🔥
 
 <h3>Screenshots</h3>
-![](https://user-images.githubusercontent.com/58791451/229929118-dcdc663b-d997-43e4-a4d7-9bf67a71f4c3.jpg)
-![](https://user-images.githubusercontent.com/58791451/229929121-18a81173-d0a1-489e-a54e-6c6a85cb2e2b.jpg)
-![Screenshot_2023-04-04-23-29-41-251_host exp exponent](https://user-images.githubusercontent.com/58791451/229929124-9238aa65-fb59-40e5-892e-719054b9f146.jpg)
-![Screenshot_2023-04-04-23-29-50-494_host exp exponent](https://user-images.githubusercontent.com/58791451/229929127-37c370fd-ce9e-40c2-9e91-1fe762ebdb7b.jpg)
-![Screenshot_2023-04-04-23-30-07-706_host exp exponent](https://user-images.githubusercontent.com/58791451/229929132-e0dea804-d21c-47c3-be61-163296535696.jpg)
-![Screenshot_2023-04-04-23-31-02-675_host exp exponent](https://user-images.githubusercontent.com/58791451/229929136-d47b97d5-6916-4913-8282-c2b0edb25a45.jpg)
-![Screenshot_2023-04-04-23-29-25-102_host exp exponent](https://user-images.githubusercontent.com/58791451/229929141-b2a12200-77a1-49d6-9a15-bd9ca0bcd183.jpg)
+![Screenshot_2023-04-04-23-29-25-102_host exp exponent](https://user-images.githubusercontent.com/58791451/229930593-48ca0144-08e6-4d6d-867f-5c0456146df7.jpg)
+![Screenshot_2023-04-04-23-29-16-903_host exp exponent](https://user-images.githubusercontent.com/58791451/229930609-0e76a001-ca56-4fab-9765-2c6d592fbc30.jpg)
+![Screenshot_2023-04-04-23-29-31-658_host exp exponent](https://user-images.githubusercontent.com/58791451/229930624-a2645fc1-49e2-4eb5-98fd-35293bdd2056.jpg)
+![Screenshot_2023-04-04-23-29-41-251_host exp exponent](https://user-images.githubusercontent.com/58791451/229930636-f092170a-28c8-40dd-b970-dc71181abef1.jpg)
+![Screenshot_2023-04-04-23-29-50-494_host exp exponent](https://user-images.githubusercontent.com/58791451/229930646-e29298a2-63c3-43a6-b379-cbfbd6b86fc2.jpg)
+![Screenshot_2023-04-04-23-30-07-706_host exp exponent](https://user-images.githubusercontent.com/58791451/229930657-fc68b0d0-f631-40fa-9af1-eeeb03ca510d.jpg)
+![Screenshot_2023-04-04-23-31-02-675_host exp exponent](https://user-images.githubusercontent.com/58791451/229930667-4a591e51-ab2d-41e8-8cf0-43b28569deeb.jpg)
 
