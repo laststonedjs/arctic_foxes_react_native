@@ -25,7 +25,7 @@ Enjoy and give me a star if you like it! 🔥🔥
 <h3>Screenshots</h3>
 <p>
 <img src="https://user-images.githubusercontent.com/58791451/229930593-48ca0144-08e6-4d6d-867f-5c0456146df7.jpg" width="80%" height="70%" />
-<em>Home Screen</em>
+<figcaption>Home Screen</figcaption>
 </p>
 <p>
 <img src="https://user-images.githubusercontent.com/58791451/229930609-0e76a001-ca56-4fab-9765-2c6d592fbc30.jpg" width="80%" height="70%" />
