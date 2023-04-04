@@ -9,30 +9,41 @@ import { AddButton } from './Button';
 const WIDTH_MODAL = Dimensions.get('window').width;
 const HEIGHT_MODAL = 650;
 
-export const AddModal = ({ swapModalVisible, onSubmit }) => {
+export const AddModal = ({ swapModalVisible }) => {
   const [foxes, setFoxes] = useState(foxData);
   const [newFoxName, setNewFoxName] = useState('');
   const [newFoxAge, setNewFoxAge] = useState('');
   const [newFoxDomain, setNewFoxDomain] = useState('');
+  const [newFoxFood, setNewFoxFood] = useState('');
 
   const handleOnChangeText = (text, value) => {
     if (value === 'newFoxName') setNewFoxName(text);
     if (value === 'newFoxAge') setNewFoxAge(text);
     if (value === 'newFoxDomain') setNewFoxDomain(text);
+    if (value === 'newFoxFood') setNewFoxFood(text);
   };
 
-  console.log(newFoxName, newFoxAge, newFoxDomain);
-
   const handleSubmit = () => {
-    if (newFoxName.length == 0 || newFoxAge.length == 0 || newFoxDomain.length == 0) {
+
+    if (newFoxName.length == 0 || newFoxAge.length == 0
+      || newFoxDomain.length == 0 || newFoxFood.length == 0) {
       Toast.showWithGravity("Please fill in all input fields!", Toast.LONG, Toast.TOP);
       return;
     }
 
-    onSubmit(newFoxName, newFoxAge, newFoxDomain);
+    const newFox = {
+      image: assets.fox1,
+      name: newFoxName,
+      age: newFoxAge,
+      domain: newFoxDomain,
+      food: newFoxFood
+    }
+    foxData.push(newFox);
+
     setNewFoxName('');
     setNewFoxAge('');
     setNewFoxDomain('');
+    setNewFoxFood('');
 
     closeModal();
   }
@@ -124,11 +135,23 @@ export const AddModal = ({ swapModalVisible, onSubmit }) => {
                   height: 30,
                   borderBottomColor: COLORS.gray,
                   marginHorizontal: SIZES.large,
+                  marginBottom: SIZES.font + 1,
                   borderBottomWidth: 1
                 }}
                 onChangeText={(text) => handleOnChangeText(text, 'newFoxDomain')}
                 placeholder="Enter where your fox COMES FROM"
                 value={newFoxDomain}
+              />
+              <TextInput
+                style={{
+                  height: 30,
+                  borderBottomColor: COLORS.gray,
+                  marginHorizontal: SIZES.large,
+                  borderBottomWidth: 1
+                }}
+                onChangeText={(text) => handleOnChangeText(text, 'newFoxFood')}
+                placeholder="Enter what it FEEDS on"
+                value={newFoxFood}
               />
             </View>
           </View>

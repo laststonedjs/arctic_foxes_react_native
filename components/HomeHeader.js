@@ -1,33 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
   Text,
   Image,
   TextInput,
   SafeAreaView,
-  TouchableOpacity,
-  Modal,
 } from 'react-native';
-// components
-import { AddModal } from './AddFoxModal';
 // constants
 import { COLORS, SIZES, FONTS, SHADOWS, assets } from '../constants';
 
 const HomeHeader = ({ onSearch }) => {
-  const [isAddModalVisible, setIsAddModalVisible] = useState(false);
-
-  const swapModalVisible = (bool) => {
-    setIsAddModalVisible(bool);
-  }
-
-  const handleOnSubmit = (newFoxName, newFoxAge, newFoxDomain) => {
-    const fox = {
-      newFoxName,
-      newFoxAge,
-      newFoxDomain
-    };
-    console.log(fox);
-  }
 
   return (
     <SafeAreaView>
@@ -87,45 +69,6 @@ const HomeHeader = ({ onSearch }) => {
               onChangeText={onSearch}
             />
           </View>
-        </View>
-
-        {/* ADD FOX MODAL */}
-        <View style={{
-          maxWidth: "55%",
-          alignItems: "center",
-        }}>
-          <TouchableOpacity
-            style={{
-              backgroundColor: COLORS.cultural,
-              paddingVertical: SIZES.base - 3,
-              paddingHorizontal: SIZES.medium,
-              marginRight: SIZES.medium + 4,
-              marginTop: SIZES.large,
-              borderRadius: SIZES.medium + 2,
-            }}
-            onPress={() => swapModalVisible(true)}
-          >
-            <Text style={{
-              marginHorizontal: SIZES.font,
-              marginVertical: SIZES.font,
-              color: COLORS.chocolateKisses,
-              fontFamily: FONTS.bold,
-              fontSize: SIZES.regular
-            }}>
-              Add a New Fox{"   "}💼
-            </Text>
-          </TouchableOpacity>
-          <Modal
-            transparent={true}
-            animationType="fade"
-            visible={isAddModalVisible}
-            onRequestClose={() => swapModalVisible(false)}
-          >
-            <AddModal
-              swapModalVisible={swapModalVisible}
-              onSubmit={handleOnSubmit}
-            />
-          </Modal>
         </View>
       </View>
     </SafeAreaView>

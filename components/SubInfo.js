@@ -18,10 +18,10 @@ export const FoxTitle = ({ title, titleSize, subTitle, subTitleSize }) => {
         color: COLORS.chocolateKisses
       }}>
         <Text style={{
-          fontFamily: FONTS.semiBold,
-          fontSize: SIZES.medium + 2
+          fontFamily: FONTS.medium,
+          fontSize: SIZES.medium
         }}>
-          Inhabit{" "}
+          Inhabit &nbsp;
         </Text>
         <Text style={{
           fontFamily: FONTS.light,
