@@ -23,6 +23,7 @@ deleting and changing existing foxes from the list. Without a backend, I use dat
 Enjoy and give me a star if you like it! 🔥🔥
 
 <h3>Screenshots</h3>
+<img src="https://user-images.githubusercontent.com/58791451/229930593-48ca0144-08e6-4d6d-867f-5c0456146df7.jpg" />
 ![Screenshot_2023-04-04-23-29-25-102_host exp exponent](https://user-images.githubusercontent.com/58791451/229930593-48ca0144-08e6-4d6d-867f-5c0456146df7.jpg)
 ![Screenshot_2023-04-04-23-29-16-903_host exp exponent](https://user-images.githubusercontent.com/58791451/229930609-0e76a001-ca56-4fab-9765-2c6d592fbc30.jpg)
 ![Screenshot_2023-04-04-23-29-31-658_host exp exponent](https://user-images.githubusercontent.com/58791451/229930624-a2645fc1-49e2-4eb5-98fd-35293bdd2056.jpg)
