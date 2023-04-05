@@ -1,4 +1,4 @@
-import { View, TextInput, Modal, Text, SafeAreaView, Dimensions, TouchableOpacity } from 'react-native';
+import { View, TextInput, Text, SafeAreaView, Dimensions, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import Toast from 'react-native-simple-toast';
 // constants
@@ -45,7 +45,7 @@ export const AddModal = ({ swapModalVisible }) => {
     setNewFoxDomain('');
     setNewFoxFood('');
 
-    closeModal();
+    Toast.showWithGravity("Congrat's, successfully edited your favorite Arctic Fox!", Toast.LONG, Toast.TOP);
   }
 
   const closeModal = (bool) => {

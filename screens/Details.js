@@ -88,7 +88,6 @@ const Details = ({ route, navigation }) => {
     setInputText(item.name);
     setInputAge(item.age);
     setInputDomain(item.domain);
-    // setSelectedImage(item.image);
     setEditItem(item.id);
   }
 
